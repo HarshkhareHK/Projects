@@ -1,5 +1,5 @@
 // Replace 'YOUR_API_KEY' with your actual API key from a weather API provider.
-const apiKey = 'YOUR_API_KEY';
+const apiKey = 'https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}';
 const apiUrl = 'https://api.openweathermap.org/data/2.5/weather';
 
 // Function to fetch weather data from the API based on the city name.
