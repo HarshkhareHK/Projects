@@ -37,10 +37,13 @@
 
     <script>
         const apiKey ="1ed5803b66f9dfaac74f7e09a4bde6ee";
-        const apiUrl ="https://api.openweathermap.org/data/2.5/weather?units=metric&q=jhansi";  
+        const apiUrl ="https://api.openweathermap.org/data/2.5/weather?units=metric&q=";  
 
-        async function checkWeather(){
-            const response = await fetch(apiUrl + `&appid=${apiKey}`);
+        const searchBox = document.querySelector(".search input");
+        const searchBtn = document.querySelector(".search button");
+        async function checkWeather(city){
+            if(city!==undefined)
+            {const response = await fetch(`${apiUrl}${city}&appid=${apiKey}`);
             var data = await response.json();
             
            console.log(data);
@@ -49,9 +52,13 @@
             document.querySelector(".temp").innerHTML = Math.round(data.main.temp) +"°c";
             document.querySelector(".humidity").innerHTML = data.main.humidity+"%";
             document.querySelector(".wind").innerHTML = Math.round(data.wind.speed)+"Km/h";
-
+}
 
         }
+
+        searchBtn.addEventListener("click", ()=>{
+            checkWeather(searchBox.value); 
+        });
 
         checkWeather();
     </script>
