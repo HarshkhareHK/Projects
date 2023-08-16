@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Weather App</title>
     <link rel="stylesheet" href="Style.css">
 </head>
 <body>
@@ -42,8 +42,7 @@
         const searchBox = document.querySelector(".search input");
         const searchBtn = document.querySelector(".search button");
         async function checkWeather(city){
-            if(city!==undefined)
-            {const response = await fetch(`${apiUrl}${city}&appid=${apiKey}`);
+            const response = await fetch(apiUrl + city + `appid=${apiKey}`);
             var data = await response.json();
             
            console.log(data);
@@ -52,7 +51,6 @@
             document.querySelector(".temp").innerHTML = Math.round(data.main.temp) +"°c";
             document.querySelector(".humidity").innerHTML = data.main.humidity+"%";
             document.querySelector(".wind").innerHTML = Math.round(data.wind.speed)+"Km/h";
-}  
 
         }
 
