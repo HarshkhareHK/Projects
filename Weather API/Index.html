@@ -19,7 +19,7 @@
             <div class="details">
                 <div class="col">
                     <img src="/Icons/Weather/humidity.png">
-                    <div>
+                    <div> 
                         <p class="humidity">50%</p>
                         <p>Humidity</p>
                     </div>
@@ -40,7 +40,8 @@
 
         const searchBox = document.querySelector(".search input");
         const searchBtn = document.querySelector(".search button");
-        
+        const weatherIcon = document.querySelector(".weather-icon");
+
         async function checkWeather(city){
             const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
             var data = await response.json();
@@ -51,6 +52,10 @@
             document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "°c";
             document.querySelector(".humidity").innerHTML = data.main.humidity + "%";
             document.querySelector(".wind").innerHTML = Math.round(data.wind.speed) + "Km/h";
+
+            if(data.weather[0].main == "Clouds"){
+                weatherIcon.src= "Icon/Weather/cloudy.png";
+            }
 
         } 
 
